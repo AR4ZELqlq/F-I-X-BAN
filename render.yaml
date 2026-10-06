@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: fix-ban-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn server:APP
+    envVars:
+      - key: FIXBAN_SECRET
+        generateValue: true
+      - key: FIXBAN_DB
+        value: /tmp/fix_ban.db
